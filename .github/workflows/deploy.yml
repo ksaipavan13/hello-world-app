@@ -40,6 +40,11 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-west-2
 
-      - name: Deploy to ECS
+      - name: Initialize Terraform
+        working-directory: terraform
+        run: terraform init
+
+      - name: Apply Terraform
+        working-directory: terraform
         run: terraform apply -auto-approve
 
